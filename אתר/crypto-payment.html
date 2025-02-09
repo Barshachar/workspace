@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Payment | Golden Ace Poker Club</title>
+  <meta name="description" content="Make secure crypto payments to buy chips or club access in Golden Ace Poker Club. We support multiple coins and networks.">
+  <meta name="keywords" content="Crypto Payment, Bitcoin, Ethereum, USDT, Online Poker, Golden Ace, ClubGG, VIP Poker">
+  <meta name="author" content="Golden Ace Poker Club">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="sticky-header">
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Golden Ace Poker Club Logo">
+      </a>
+    </div>
+
+    <!-- Burger Menu (Mobile) -->
+    <div class="burger" id="burger-menu">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <!-- Dropdown Nav Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+
+      <li class="has-dropdown">
+        <a href="#">The Club</a>
+        <ul class="dropdown">
+          <li><a href="news.html">News</a></li>
+          <li><a href="join-club.html">Join the Club</a></li>
+          <li><a href="club-guide.html">Club Guide</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Getting Started</a>
+        <ul class="dropdown">
+          <li><a href="how-to-install.html">How to Install</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Payment</a>
+        <ul class="dropdown">
+          <li><a href="crypto-payment.html" class="active">Crypto Payment</a></li>
+          <li><a href="withdrawal.html">Withdrawal</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Policies</a>
+        <ul class="dropdown">
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+        </ul>
+      </li>
+
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- באנר עם תמונת רקע crypto-payment.webp -->
+<section class="page-banner hero-crypto-payment fade-in-on-load">
+  <h1>Crypto Payment</h1>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Fast, Secure Cryptocurrency Transactions</h2>
+  <p>
+    Golden Ace Poker Club offers the convenience of digital currency for buying chips, 
+    paying club fees, or entering special events. We believe in fast, borderless 
+    transactions that let you focus on the game rather than payment hassles.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Supported Coins &amp; Networks</h2>
+  <ul style="line-height:1.8;">
+    <li><strong>Bitcoin (BTC):</strong> Mainnet (Layer 1). The most recognized crypto—secure, 
+      global, and proven.</li>
+    <li><strong>Ethereum (ETH):</strong> ERC-20 network. Quick processing, vast ecosystem, 
+      ideal for stablecoins.</li>
+    <li><strong>Tether (USDT):</strong> Supports ERC-20 or TRC-20 (verify before sending). 
+      Great for maintaining a stable USD-equivalent balance.</li>
+    <li><strong>BNB Chain (optional):</strong> We may accommodate BEP-20 tokens if arranged 
+      in advance. Contact support for details.</li>
+  </ul>
+  <p>
+    Don’t see your preferred coin? <a href="contact.html">Contact us</a> to discuss 
+    alternative options.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Payment Instructions</h2>
+  <ol style="line-height:1.8;">
+    <li>
+      <strong>Obtain Our Wallet Address:</strong>  
+      We’ll provide a unique deposit address (e.g., BTC, ETH). Or scan the QR code if available.
+    </li>
+    <li>
+      <strong>Send the Desired Amount:</strong>  
+      Double-check the network (ERC-20, TRC-20, etc.) and the exact address.  
+      <em>Any mistake could result in loss of funds.</em>
+    </li>
+    <li>
+      <strong>Copy the TxID / Transaction Hash:</strong>  
+      After sending, get the transaction details from your wallet or exchange.
+    </li>
+    <li>
+      <strong>Fill the Form Below:</strong>  
+      Let us know which coin, how much, and your ClubGG in-game name so we can credit your account.
+    </li>
+  </ol>
+</section>
+
+<!-- טופס לתשלום בקריפטו -->
+<section class="page-content fade-in-on-scroll">
+  <h2>Crypto Payment Form</h2>
+  <form action="server/send-form.php" method="POST" class="styled-form">
+    <label for="userName">In-Game Name (ClubGG):</label>
+    <input type="text" id="userName" name="userName" required>
+
+    <label for="cryptoType">Cryptocurrency Used:</label>
+    <select id="cryptoType" name="cryptoType" required>
+      <option value="">--Select Coin--</option>
+      <option value="BTC">Bitcoin (BTC)</option>
+      <option value="ETH">Ethereum (ETH)</option>
+      <option value="USDT">Tether (USDT)</option>
+      <option value="BNB Chain">BNB Chain (BEP-20)</option>
+    </select>
+
+    <label for="txId">Transaction ID / Hash:</label>
+    <input type="text" id="txId" name="txId" required>
+
+    <label for="amount">Amount (e.g., 0.01 BTC):</label>
+    <input type="text" id="amount" name="amount" required>
+
+    <label for="email">Email (for confirmation):</label>
+    <input type="email" id="email" name="email">
+
+    <button type="submit">Submit Payment Info</button>
+  </form>
+  <p>
+    We typically verify payments within 30-60 minutes, but please allow up to 24 hours in rare 
+    cases (e.g., network congestion, manual checks).
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Security &amp; Guidelines</h2>
+  <p>
+    Always confirm the correct wallet address and network before sending. We are not responsible 
+    for funds sent to an incorrect address or on the wrong chain. 
+  </p>
+  <p>
+    <em>Tip:</em> If you’re new to crypto, consider sending a small test transaction first to 
+    ensure everything is correct.
+  </p>
+</section>
+
+<footer>
+  <div style="text-align:center; padding: 20px; background-color: #111;">
+    <p>&copy; 2025 Golden Ace Poker Club. All rights reserved.</p>
+    <p>Powered by <strong>ClubGG</strong> | <a href="contact.html" style="color:#ffd700;">Contact Support</a></p>
+    <p>
+      <a href="index.html" style="color:#fff; margin-right:10px;">Home</a> | 
+      <a href="join-club.html" style="color:#fff; margin-right:10px;">Join Now</a> | 
+      <a href="faq.html" style="color:#fff; margin-right:10px;">FAQ</a> | 
+      <a href="terms.html" style="color:#fff;">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<!-- כפתור חזרה למעלה -->
+<button id="backToTopBtn" title="Go to top">↑</button>
+
+<script src="js/script.js"></script>
+
+<!-- Tawk.to Chat Script -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6793c60f3a84273260748a8d/1iicjrbjs';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>

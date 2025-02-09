@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Golden Ace Poker Club</title>
+  <meta name="description" content="Get in touch with Golden Ace Poker Club support team via live chat, email, or the contact form.">
+  <meta name="keywords" content="Contact, Support, Online Poker, Golden Ace, ClubGG, Crypto">
+  <meta name="author" content="Golden Ace Poker Club">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="sticky-header">
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Golden Ace Poker Club Logo">
+      </a>
+    </div>
+
+    <!-- Burger Menu (Mobile) -->
+    <div class="burger" id="burger-menu">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <!-- Dropdown Nav Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      
+      <li class="has-dropdown">
+        <a href="#">The Club</a>
+        <ul class="dropdown">
+          <li><a href="news.html">News</a></li>
+          <li><a href="join-club.html">Join the Club</a></li>
+          <li><a href="club-guide.html">Club Guide</a></li>
+        </ul>
+      </li>
+      
+      <li class="has-dropdown">
+        <a href="#">Getting Started</a>
+        <ul class="dropdown">
+          <li><a href="how-to-install.html">How to Install</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Payment</a>
+        <ul class="dropdown">
+          <li><a href="crypto-payment.html">Crypto Payment</a></li>
+          <li><a href="withdrawal.html">Withdrawal</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Policies</a>
+        <ul class="dropdown">
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+        </ul>
+      </li>
+
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- באנר עם contact-bg.webp -->
+<section class="page-banner hero-contact fade-in-on-load">
+  <h1>Contact Us</h1>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>We’re Here to Help</h2>
+  <p>
+    Need assistance or have questions about joining, payments, tournaments, or anything else? 
+    Our support team is here to ensure your Golden Ace experience is smooth. 
+    You can reach us via live chat (bottom-right corner) or by filling out the form below.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Contact Form</h2>
+  <form action="server/send-form.php" method="POST" class="styled-form">
+    <label for="contactName">Name:</label>
+    <input type="text" id="contactName" name="contactName" required>
+
+    <label for="contactEmail">Email:</label>
+    <input type="email" id="contactEmail" name="contactEmail" required>
+
+    <label for="topic">Topic (optional):</label>
+    <select id="topic" name="topic">
+      <option value="">--Choose a topic--</option>
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="Technical Issue">Technical Issue</option>
+      <option value="Payment/Deposit">Payment / Deposit</option>
+      <option value="Withdrawal">Withdrawal</option>
+      <option value="Join Club">Join Club</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+  <p>
+    We aim to respond within 24 hours. Meanwhile, you can also check out our 
+    <a href="faq.html">FAQ</a> for quick answers.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Alternative Ways to Reach Us</h2>
+  <ul style="line-height:1.8;">
+    <li><strong>Live Chat:</strong> Look for the chat icon in the bottom-right corner. 
+      (Available 10 AM – 2 AM UTC)</li>
+    <li><strong>Email Support:</strong> If you prefer direct email, send inquiries to 
+      <em>support@goldenacepoker.com</em> (replace with your actual email).
+    </li>
+    <li><strong>News Page:</strong> For updates on tournaments and events, check 
+      our <a href="news.html">News page</a>.</li>
+  </ul>
+  <p>
+    We appreciate your interest in Golden Ace Poker Club and look forward to helping you!
+  </p>
+</section>
+
+<footer>
+  <div style="text-align:center; padding: 20px; background-color: #111;">
+    <p>&copy; 2025 Golden Ace Poker Club. All rights reserved.</p>
+    <p>Powered by <strong>ClubGG</strong> | <a href="contact.html" style="color:#ffd700;">Contact Support</a></p>
+    <p>
+      <a href="index.html" style="color:#fff; margin-right:10px;">Home</a> | 
+      <a href="join-club.html" style="color:#fff; margin-right:10px;">Join Now</a> | 
+      <a href="faq.html" style="color:#fff; margin-right:10px;">FAQ</a> | 
+      <a href="terms.html" style="color:#fff;">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<!-- כפתור חזרה למעלה -->
+<button id="backToTopBtn" title="Go to top">↑</button>
+
+<script src="js/script.js"></script>
+
+<!-- Tawk.to Chat Script -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6793c60f3a84273260748a8d/1iicjrbjs';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join the Club | Golden Ace Poker Club</title>
+  <meta name="description" content="Join the exclusive Golden Ace Poker Club on ClubGG. Fill out the form or use the club ID to access private poker tables and tournaments.">
+  <meta name="keywords" content="Join Poker Club, Online Poker, Golden Ace, ClubGG, VIP Poker, Private Tournaments">
+  <meta name="author" content="Golden Ace Poker Club">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="sticky-header">
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Golden Ace Poker Club Logo">
+      </a>
+    </div>
+
+    <!-- Burger Menu (Mobile) -->
+    <div class="burger" id="burger-menu">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <!-- Dropdown Nav Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+
+      <li class="has-dropdown">
+        <a href="#">The Club</a>
+        <ul class="dropdown">
+          <li><a href="news.html">News</a></li>
+          <li><a href="join-club.html" class="active">Join the Club</a></li>
+          <li><a href="club-guide.html">Club Guide</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Getting Started</a>
+        <ul class="dropdown">
+          <li><a href="how-to-install.html">How to Install</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Payment</a>
+        <ul class="dropdown">
+          <li><a href="crypto-payment.html">Crypto Payment</a></li>
+          <li><a href="withdrawal.html">Withdrawal</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Policies</a>
+        <ul class="dropdown">
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+        </ul>
+      </li>
+
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- באנר עליון עם join-club.webp -->
+<section class="page-banner hero-join-club fade-in-on-load">
+  <h1>Join the Golden Ace Poker Club</h1>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Become Part of Our Elite Poker Community</h2>
+  <p>
+    Are you ready to test your skills against competitive players and enjoy 
+    a VIP poker experience? Golden Ace Poker Club is the perfect place to sharpen 
+    your strategy, meet passionate poker fans, and potentially win big.  
+  </p>
+  <p>
+    To apply, simply fill out the form below or join directly via the ClubGG app 
+    using our Club ID: <strong>729608</strong>.  
+    After submission, we typically approve new requests within a few minutes.
+  </p>
+</section>
+
+<!-- טופס הצטרפות -->
+<section class="page-content fade-in-on-scroll">
+  <h2>Membership Application</h2>
+  <form action="server/send-form.php" method="POST" class="styled-form">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="inGameName">In-Game Name (ClubGG):</label>
+    <input type="text" id="inGameName" name="inGameName" required>
+
+    <label for="preferredGames">Preferred Games (optional):</label>
+    <select id="preferredGames" name="preferredGames">
+      <option value="">--Select your preference--</option>
+      <option value="Texas Holdem">Texas Hold’em</option>
+      <option value="Omaha">Omaha</option>
+      <option value="Mixed">Mixed Games</option>
+    </select>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <p>
+    <em>Note:</em> By submitting, you confirm that you meet the 
+    <a href="terms.html">legal age requirements</a> and agree to abide by our 
+    <a href="terms.html">Terms of Service</a>.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Why Join Golden Ace?</h2>
+  <ul style="line-height:1.8;">
+    <li><strong>Private Tournaments &amp; Events:</strong> Access exclusive, members-only tournaments with 
+      diverse buy-ins and high-stakes showdowns.</li>
+    <li><strong>Professional Atmosphere:</strong> We maintain fair play and have zero tolerance for cheating, 
+      ensuring a skill-based environment.</li>
+    <li><strong>24/7 Tables:</strong> Whether you’re a night owl or an early riser, you’ll find a seat 
+      at our virtual tables any time you want to play.</li>
+    <li><strong>Crypto Integration:</strong> Fund your account and withdraw winnings quickly with 
+      <a href="crypto-payment.html">Bitcoin, Ethereum, and more</a>.</li>
+  </ul>
+</section>
+
+<footer>
+  <div style="text-align:center; padding: 20px; background-color: #111;">
+    <p>&copy; 2025 Golden Ace Poker Club. All rights reserved.</p>
+    <p>Powered by <strong>ClubGG</strong> | <a href="contact.html" style="color:#ffd700;">Contact Support</a></p>
+    <p>
+      <a href="index.html" style="color:#fff; margin-right:10px;">Home</a> | 
+      <a href="join-club.html" style="color:#fff; margin-right:10px;">Join Now</a> | 
+      <a href="faq.html" style="color:#fff; margin-right:10px;">FAQ</a> | 
+      <a href="terms.html" style="color:#fff;">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<!-- כפתור חזרה למעלה -->
+<button id="backToTopBtn" title="Go to top">↑</button>
+
+<script src="js/script.js"></script>
+
+<!-- Tawk.to Chat Script -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6793c60f3a84273260748a8d/1iicjrbjs';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>

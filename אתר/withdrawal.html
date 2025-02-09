@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdrawal Request | Golden Ace Poker Club</title>
+  <meta name="description" content="Request a withdrawal from Golden Ace Poker Club. Fill out the form to receive your chips or crypto quickly and securely.">
+  <meta name="keywords" content="Withdrawal, Poker, Online Poker, Crypto, Golden Ace, ClubGG, Cash Out">
+  <meta name="author" content="Golden Ace Poker Club">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="sticky-header">
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Golden Ace Poker Club Logo">
+      </a>
+    </div>
+
+    <!-- Burger Menu (Mobile) -->
+    <div class="burger" id="burger-menu">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <!-- Dropdown Nav Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+
+      <li class="has-dropdown">
+        <a href="#">The Club</a>
+        <ul class="dropdown">
+          <li><a href="news.html">News</a></li>
+          <li><a href="join-club.html">Join the Club</a></li>
+          <li><a href="club-guide.html">Club Guide</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Getting Started</a>
+        <ul class="dropdown">
+          <li><a href="how-to-install.html">How to Install</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Payment</a>
+        <ul class="dropdown">
+          <li><a href="crypto-payment.html">Crypto Payment</a></li>
+          <li><a href="withdrawal.html" class="active">Withdrawal</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#">Policies</a>
+        <ul class="dropdown">
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+        </ul>
+      </li>
+
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- באנר עם תמונת רקע withdrawal.webp -->
+<section class="page-banner hero-withdrawal fade-in-on-load">
+  <h1>Withdrawal Request</h1>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Cash Out Your Winnings Securely</h2>
+  <p>
+    Ready to enjoy your profits from Golden Ace Poker Club? Our withdrawal process is designed 
+    to be efficient and secure. Whether you’re cashing out chips or requesting a crypto transfer, 
+    we’ll guide you through the steps.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>1. Eligibility &amp; Verification</h2>
+  <ul style="line-height:1.8;">
+    <li><strong>Legal Age &amp; Terms Compliance:</strong> You must meet our 
+      <a href="terms.html">Terms of Service</a> and legal age requirements.</li>
+    <li><strong>KYC (if needed):</strong> We may request identification documents to confirm your 
+      identity, especially for larger withdrawals.</li>
+    <li><strong>Minimum Balance:</strong> Ensure you have the required minimum balance in your account 
+      before requesting a payout.</li>
+  </ul>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>2. Withdrawal Options</h2>
+  <p>
+    You can withdraw via one of the following methods:
+  </p>
+  <ul style="line-height:1.8;">
+    <li><strong>Crypto Transfer:</strong> BTC, ETH, USDT, or other agreed-upon tokens (please fill 
+      out the form below).</li>
+    <li><strong>Chip Conversion:</strong> Convert your in-game chips to a designated crypto 
+      balance, then proceed with a blockchain transfer.</li>
+    <li><em>(Future Update)</em> - We may add direct bank transfer or e-wallet solutions based on 
+      user demand and regulatory conditions.</li>
+  </ul>
+</section>
+
+<!-- טופס בקשת משיכה -->
+<section class="page-content fade-in-on-scroll">
+  <h2>3. Request Form</h2>
+  <form action="server/send-form.php" method="POST" class="styled-form">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="inGameName">In-Game Name (ClubGG):</label>
+    <input type="text" id="inGameName" name="inGameName" required>
+
+    <label for="withdrawAmount">Withdrawal Amount:</label>
+    <input type="number" step="0.01" id="withdrawAmount" name="withdrawAmount" required>
+
+    <label for="cryptoType">Cryptocurrency (if requesting crypto):</label>
+    <select id="cryptoType" name="cryptoType">
+      <option value="">--Select Coin (optional)--</option>
+      <option value="BTC">Bitcoin (BTC)</option>
+      <option value="ETH">Ethereum (ETH)</option>
+      <option value="USDT">Tether (USDT)</option>
+      <option value="BNB Chain">BNB Chain (BEP-20)</option>
+    </select>
+
+    <label for="cryptoAddress">Your Crypto Wallet Address (if crypto):</label>
+    <input type="text" id="cryptoAddress" name="cryptoAddress">
+
+    <label for="email">Email (for confirmation):</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">Submit Request</button>
+  </form>
+  <p>
+    <em>Note:</em> Our team verifies each request to maintain security and compliance with applicable 
+    laws. Verification typically takes under 3 hours, but we reserve up to 24 hours if further checks 
+    are required.
+  </p>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>4. Timeline &amp; Fees</h2>
+  <ul style="line-height:1.8;">
+    <li><strong>Standard Processing:</strong> 1–3 hours for most transactions.</li>
+    <li><strong>Possible Delays:</strong> Up to 24 hours if manual verification is needed or during 
+      high network congestion (e.g., Bitcoin mempool spikes).</li>
+    <li><strong>Network Fees (Crypto):</strong> You are responsible for any blockchain transaction 
+      fees (miners’ fees). We don’t add hidden fees on top of that.</li>
+  </ul>
+</section>
+
+<section class="page-content fade-in-on-scroll">
+  <h2>Got Questions?</h2>
+  <p>
+    If you encounter issues or have additional questions regarding withdrawals, check our 
+    <a href="faq.html">FAQ</a> or contact us directly via 
+    <a href="contact.html">live chat</a>. 
+  </p>
+  <p>
+    <strong>Golden Ace Poker Club</strong> strives to ensure smooth payouts so you can 
+    enjoy your winnings without hassle!
+  </p>
+</section>
+
+<footer>
+  <div style="text-align:center; padding: 20px; background-color: #111;">
+    <p>&copy; 2025 Golden Ace Poker Club. All rights reserved.</p>
+    <p>Powered by <strong>ClubGG</strong> | <a href="contact.html" style="color:#ffd700;">Contact Support</a></p>
+    <p>
+      <a href="index.html" style="color:#fff; margin-right:10px;">Home</a> | 
+      <a href="join-club.html" style="color:#fff; margin-right:10px;">Join Now</a> | 
+      <a href="faq.html" style="color:#fff; margin-right:10px;">FAQ</a> | 
+      <a href="terms.html" style="color:#fff;">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<!-- כפתור חזרה למעלה -->
+<button id="backToTopBtn" title="Go to top">↑</button>
+
+<script src="js/script.js"></script>
+
+<!-- Tawk.to Chat Script -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6793c60f3a84273260748a8d/1iicjrbjs';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>
