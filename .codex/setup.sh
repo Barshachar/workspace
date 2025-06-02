@@ -1,45 +1,58 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FLUTTER_VERSION=3.22.0   # עדכן אם רוצים גרסה אחרת
+################################################################################
+#  ⚙️  Flutter – cross-platform install
+################################################################################
+FLUTTER_VERSION=3.22.0   # עדכן כאן אם תרצה גרסה אחרת
 
 install_flutter_linux() {
-  curl -sL \
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
+  curl -sL "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
     -o flutter.tar.xz
   tar xf flutter.tar.xz
   export PATH="$PWD/flutter/bin:$PATH"
-  echo 'export PATH="$PWD/flutter/bin:$PATH"' >> "${HOME}/.bashrc"
+  echo 'export PATH="$PATH:'"$PWD"'/flutter/bin"' >> "${HOME}/.bashrc"
 }
 
 install_flutter_macos() {
-  # אם יש Homebrew – זו הדרך הפשוטה
-  if command -v brew &>/dev/null; then
+  if command -v brew &>/dev/null; then                    # Home-brew הדרך הקלה
     brew install --cask flutter
-  else
-    curl -sL \
-      "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" \
+  else                                                    # ללא Brew – ZIP
+    curl -sL "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" \
       -o flutter.zip
     unzip -q flutter.zip
     export PATH="$PWD/flutter/bin:$PATH"
-    echo 'export PATH="$PWD/flutter/bin:$PATH"' >> "${HOME}/.zshrc"
+    echo 'export PATH="$PATH:'"$PWD"'/flutter/bin"' >> "${HOME}/.zshrc"
   fi
 }
 
 if ! command -v flutter &>/dev/null; then
   case "$(uname -s)" in
-    Linux*)   install_flutter_linux ;;
-    Darwin*)  install_flutter_macos ;;
-    *)        echo "Unsupported OS: $(uname -s)"; exit 1 ;;
+    Linux*)  install_flutter_linux  ;;
+    Darwin*) install_flutter_macos ;;
+    *)       echo "❌ Unsupported OS: $(uname -s)"; exit 1 ;;
   esac
 fi
 
 flutter --version
 
-# ---------- node & supabase CLI --------------------------------------------
-npm install -g supabase@1.140.8
+################################################################################
+#  🟢  Node + Supabase CLI  (ללא הצמדת גרסה כדי שלא יישבר בעתיד)
+################################################################################
+if ! command -v node &>/dev/null; then
+  echo "👉 Installing Node via Homebrew..."
+  brew install node               # על Linux אפשר apt/yum; התאם לצורך
+fi
 
-# ---------- jest for Edge-Function tests -----------------------------------
+if [[ "$(uname -s)" == "Darwin" ]] && command -v brew &>/dev/null; then
+  brew install supabase/tap/supabase
+else
+  npm install -g supabase         # ללא ‎@version – תמיד ייקח את latest
+fi
+
+################################################################################
+#  🧪  Jest (Edge-Function unit tests)
+################################################################################
 npm install -g jest
 
-echo "✅  Setup finished"
+echo "✅  Setup finished – happy coding!"
