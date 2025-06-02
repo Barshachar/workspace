@@ -1,0 +1,54 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: actions/cache@v3
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+      - uses: actions/cache@v3
+        with:
+          path: admin/node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('admin/package-lock.json') }}
+      - uses: actions/cache@v3
+        with:
+          path: supabase/functions/node_modules
+          key: ${{ runner.os }}-npm-fn-${{ hashFiles('supabase/functions/package.json') }}
+      - run: npm install -g supabase@1.140.8
+      - run: flutter pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter test --coverage
+      - run: |
+          covered=$(grep -m1 -Po 'lines......: \K\d+(?=%)' coverage/lcov.info)
+          if [ "$covered" -lt 90 ]; then
+            echo "Coverage $covered% is below 90%" && exit 1; fi
+      - run: flutter build web --release
+      - run: flutter build apk --release
+      - run: supabase db push --project-ref ${{ secrets.SUPABASE_PROJECT_REF }} --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - run: supabase db lint --project-ref ${{ secrets.SUPABASE_PROJECT_REF }} --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - run: |
+          cd supabase/functions && npm ci && npm test && cd ../..
+      - run: supabase functions deploy --project-ref ${{ secrets.SUPABASE_PROJECT_REF }} --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }} --force
+      - run: |
+          cd admin && npm ci && npm run build && cd ..
+      - uses: actions/upload-artifact@v3
+        with:
+          name: web
+          path: build/web
+      - uses: actions/upload-artifact@v3
+        with:
+          name: admin
+          path: admin/dist

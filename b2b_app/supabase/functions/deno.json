@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "supabase": "https://esm.sh/@supabase/supabase-js@2",
+    "firebase-admin/app": "npm:firebase-admin@11/app",
+    "firebase-admin/messaging": "npm:firebase-admin@11/messaging",
+    "stripe": "https://esm.sh/stripe@13?target=deno"
+  }
+}
