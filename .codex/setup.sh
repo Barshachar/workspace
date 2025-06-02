@@ -7,7 +7,8 @@ set -euo pipefail
 FLUTTER_VERSION=3.22.0   # עדכן כאן אם תרצה גרסה אחרת
 
 install_flutter_linux() {
-  curl -sL "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
+  curl -sL \
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
     -o flutter.tar.xz
   tar xf flutter.tar.xz
   export PATH="$PWD/flutter/bin:$PATH"
@@ -15,10 +16,11 @@ install_flutter_linux() {
 }
 
 install_flutter_macos() {
-  if command -v brew &>/dev/null; then                    # Home-brew הדרך הקלה
+  if command -v brew &>/dev/null; then          # Homebrew – הדרך הקלה
     brew install --cask flutter
-  else                                                    # ללא Brew – ZIP
-    curl -sL "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" \
+  else                                          # ללא Brew – ZIP ידני
+    curl -sL \
+      "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" \
       -o flutter.zip
     unzip -q flutter.zip
     export PATH="$PWD/flutter/bin:$PATH"
@@ -35,19 +37,21 @@ if ! command -v flutter &>/dev/null; then
 fi
 
 flutter --version
+flutter doctor -v
 
 ################################################################################
 #  🟢  Node + Supabase CLI  (ללא הצמדת גרסה כדי שלא יישבר בעתיד)
 ################################################################################
 if ! command -v node &>/dev/null; then
-  echo "👉 Installing Node via Homebrew..."
-  brew install node               # על Linux אפשר apt/yum; התאם לצורך
+  echo "👉 Installing Node via Homebrew…"
+  # על Linux אפשר apt/yum לפי ההפצה
+  brew install node
 fi
 
 if [[ "$(uname -s)" == "Darwin" ]] && command -v brew &>/dev/null; then
-  brew install supabase/tap/supabase
+  brew install supabase/tap/supabase   # always installs latest
 else
-  npm install -g supabase         # ללא ‎@version – תמיד ייקח את latest
+  npm install -g supabase             # ללא ‎@version
 fi
 
 ################################################################################
