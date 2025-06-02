@@ -1,0 +1,12 @@
+# Flutter/Dart/Pub related
+**/build/
+.dart_tool/
+.packages
+.pub-cache/
+.idea/
+.vscode/
+*.iml
+
+# Supabase
+supabase/.temp/
+
