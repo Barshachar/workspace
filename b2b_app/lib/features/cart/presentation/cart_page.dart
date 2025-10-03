@@ -35,10 +35,14 @@ class _CartList extends ConsumerWidget {
             itemCount: items.length,
             itemBuilder: (context, index) {
               final item = items[index];
+              final itemId = item.id;
               return Dismissible(
-                key: ValueKey(item.productId),
-                onDismissed: (_) =>
-                    ref.read(cartControllerProvider.notifier).removeItem(item.productId),
+                key: ValueKey(itemId ?? item.productId),
+                onDismissed: (_) {
+                  if (itemId != null) {
+                    ref.read(cartControllerProvider.notifier).removeItem(itemId);
+                  }
+                },
                 child: ListTile(
                   title: Text(item.productId),
                   subtitle: Row(
@@ -47,10 +51,10 @@ class _CartList extends ConsumerWidget {
                         icon: const Icon(Icons.remove),
                         onPressed: () {
                           final qty = item.quantity - 1;
-                          if (qty > 0) {
+                          if (qty > 0 && itemId != null) {
                             ref
                                 .read(cartControllerProvider.notifier)
-                                .updateQty(item.productId, qty);
+                                .updateQty(itemId, qty);
                           }
                         },
                       ),
@@ -58,9 +62,11 @@ class _CartList extends ConsumerWidget {
                       IconButton(
                         icon: const Icon(Icons.add),
                         onPressed: () {
-                          ref
-                              .read(cartControllerProvider.notifier)
-                              .updateQty(item.productId, item.quantity + 1);
+                          if (itemId != null) {
+                            ref
+                                .read(cartControllerProvider.notifier)
+                                .updateQty(itemId, item.quantity + 1);
+                          }
                         },
                       ),
                     ],
