@@ -34,10 +34,21 @@ class CartController extends AsyncNotifier<List<OrderItem>> {
     }
 
     final stream = _repo.watch(_userId!);
+    final completer = Completer<List<OrderItem>>();
     await _subscription?.cancel();
     _subscription = stream.listen(
-      (event) => state = AsyncData(event),
-      onError: (error, stackTrace) => state = AsyncError(error, stackTrace),
+      (event) {
+        if (!completer.isCompleted) {
+          completer.complete(event);
+        }
+        state = AsyncData(event);
+      },
+      onError: (error, stackTrace) {
+        if (!completer.isCompleted) {
+          completer.completeError(error, stackTrace);
+        }
+        state = AsyncError(error, stackTrace);
+      },
     );
 
     if (!_disposeRegistered) {
@@ -47,7 +58,7 @@ class CartController extends AsyncNotifier<List<OrderItem>> {
       _disposeRegistered = true;
     }
 
-    return stream.first;
+    return completer.future;
   }
 
   Future<void> addItem(OrderItem item) async {
