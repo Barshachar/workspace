@@ -9,6 +9,7 @@ OrderItem _$OrderItemFromJson(Map<String, dynamic> json) {
 }
 
 mixin _$OrderItem {
+  String? get id => throw _privateConstructorUsedError;
   String get productId => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -20,7 +21,7 @@ mixin _$OrderItem {
 
 abstract class $OrderItemCopyWith<$Res> {
   factory $OrderItemCopyWith(OrderItem value, $Res Function(OrderItem) then) = _$OrderItemCopyWithImpl<$Res>;
-  $Res call({String productId, int quantity, double price});
+  $Res call({String? id, String productId, int quantity, double price});
 }
 
 class _$OrderItemCopyWithImpl<$Res> implements $OrderItemCopyWith<$Res> {
@@ -29,8 +30,9 @@ class _$OrderItemCopyWithImpl<$Res> implements $OrderItemCopyWith<$Res> {
   final $Res Function(OrderItem) _then;
 
   @override
-  $Res call({Object? productId = freezed, Object? quantity = freezed, Object? price = freezed}) {
+  $Res call({Object? id = freezed, Object? productId = freezed, Object? quantity = freezed, Object? price = freezed}) {
     return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as String?,
       productId: productId == freezed ? _value.productId : productId as String,
       quantity: quantity == freezed ? _value.quantity : quantity as int,
       price: price == freezed ? _value.price : price as double,
@@ -41,7 +43,7 @@ class _$OrderItemCopyWithImpl<$Res> implements $OrderItemCopyWith<$Res> {
 abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
   factory _$$_OrderItemCopyWith(_OrderItem value, $Res Function(_OrderItem) then) = __$$_OrderItemCopyWithImpl<$Res>;
   @override
-  $Res call({String productId, int quantity, double price});
+  $Res call({String? id, String productId, int quantity, double price});
 }
 
 class __$$_OrderItemCopyWithImpl<$Res> extends _$OrderItemCopyWithImpl<$Res> implements _$$_OrderItemCopyWith<$Res> {
@@ -51,8 +53,9 @@ class __$$_OrderItemCopyWithImpl<$Res> extends _$OrderItemCopyWithImpl<$Res> imp
   _OrderItem get _value => super._value as _OrderItem;
 
   @override
-  $Res call({Object? productId = freezed, Object? quantity = freezed, Object? price = freezed}) {
+  $Res call({Object? id = freezed, Object? productId = freezed, Object? quantity = freezed, Object? price = freezed}) {
     return _then(_OrderItem(
+      id: id == freezed ? _value.id : id as String?,
       productId: productId == freezed ? _value.productId : productId as String,
       quantity: quantity == freezed ? _value.quantity : quantity as int,
       price: price == freezed ? _value.price : price as double,
@@ -62,10 +65,12 @@ class __$$_OrderItemCopyWithImpl<$Res> extends _$OrderItemCopyWithImpl<$Res> imp
 
 @JsonSerializable()
 class _$_OrderItem implements _OrderItem {
-  const _$_OrderItem({required this.productId, required this.quantity, required this.price});
+  const _$_OrderItem({this.id, required this.productId, required this.quantity, required this.price});
 
   factory _$_OrderItem.fromJson(Map<String, dynamic> json) => _$$_OrderItemFromJson(json);
 
+  @override
+  final String? id;
   @override
   final String productId;
   @override
@@ -75,16 +80,17 @@ class _$_OrderItem implements _OrderItem {
 
   @override
   String toString() {
-    return 'OrderItem(productId: $productId, quantity: $quantity, price: $price)';
+    return 'OrderItem(id: $id, productId: $productId, quantity: $quantity, price: $price)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _OrderItem && other.productId == productId && other.quantity == quantity && other.price == price);
+    return identical(this, other) ||
+        (other is _OrderItem && other.id == id && other.productId == productId && other.quantity == quantity && other.price == price);
   }
 
   @override
-  int get hashCode => Object.hash(productId, quantity, price);
+  int get hashCode => Object.hash(id, productId, quantity, price);
 
   @JsonKey(ignore: true)
   @override
@@ -97,10 +103,12 @@ class _$_OrderItem implements _OrderItem {
 }
 
 abstract class _OrderItem implements OrderItem {
-  const factory _OrderItem({required String productId, required int quantity, required double price}) = _$_OrderItem;
+  const factory _OrderItem({String? id, required String productId, required int quantity, required double price}) = _$_OrderItem;
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) = _$_OrderItem.fromJson;
 
+  @override
+  String? get id;
   @override
   String get productId;
   @override

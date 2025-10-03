@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:developer' as developer;
 import 'dart:io';
+
 import 'package:http/http.dart' as http;
 
 class CreditResult {
@@ -15,9 +17,19 @@ class BnplProvider {
       try {
         final resp = await http.post(
           Uri.parse('https://bnpl.example.com/check-credit'),
+          headers: const {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
           body: jsonEncode({'customerId': customerId}),
         );
-        if (resp.statusCode != 200) throw HttpException('status ${resp.statusCode}');
+        if (resp.statusCode != 200) {
+          developer.log(
+            'BNPL credit check failed with status ${resp.statusCode}: ${resp.body}',
+            name: 'BnplProvider',
+          );
+          throw HttpException('status ${resp.statusCode}');
+        }
         final data = jsonDecode(resp.body) as Map<String, dynamic>;
         return CreditResult(
           (data['limit'] as num).toDouble(),
