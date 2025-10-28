@@ -34,3 +34,8 @@ curl -X POST http://localhost:54321/functions/v1/predict-reorder
 ### מפתח API לסופבייס
 במסך Settings → API ב-Supabase מצאו את ה-Service Role וצרפו אותו כ-`SUPABASE_SERVICE_ROLE_KEY` ב-`.env` ובלשונית הסודות של GitHub.
 \nלמידע על מצב לא מקוון ראו docs/offline.md
+
+## Branch Protection
+- יש לפתוח Pull Request עבור כל שינוי לענף `main`.
+- נדרש אישור סקירה אחד לפחות לפני מיזוג.
+- יש לוודא שכל בדיקות ה-CI (לדוגמה, "Flutter Tests") עוברות בהצלחה לפני מיזוג.
