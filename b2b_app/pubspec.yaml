@@ -20,7 +20,7 @@ dependencies:
   firebase_messaging: ^14.7.0
   flutter_stripe: ^9.3.0
   cached_network_image: ^3.3.1
-  charts_flutter: ^0.12.0
+  charts_flutter_fork: ^0.13.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   freezed_annotation: ^2.4.1
