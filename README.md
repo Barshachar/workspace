@@ -1,3 +1,5 @@
+[![Flutter CI](https://github.com/Barshachar/workspace/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/Barshachar/workspace/actions/workflows/flutter-ci.yml)
+
 # A Shachar B2B App
 
 זהו מאגר הקוד של אפליקציית ההזמנות B2B. לפני הרצה יש ליצור קובץ `.env` על בסיס `.env.example` ולמלא את המפתחות של Supabase, Stripe ועוד. בנוסף נדרש להתקין Flutter 3.22 ומעלה, להריץ `supabase init` ולהפעיל את שירותי Supabase והפונקציות.

@@ -14,6 +14,7 @@
 
 ## Test Summary
 - SKIPPED (pytest: no tests collected)
+- CI: [Flutter CI](https://github.com/Barshachar/workspace/actions/workflows/flutter-ci.yml)
 
 ## Missing Environment Keys
 - None
