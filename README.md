@@ -1,3 +1,5 @@
+[![Flutter CI](https://github.com/Barshachar/workspace/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/Barshachar/workspace/actions/workflows/flutter-ci.yml)
+
 # A Shachar B2B App
 
 זהו מאגר הקוד של אפליקציית ההזמנות B2B. לפני הרצה יש ליצור קובץ `.env` על בסיס `.env.example` ולמלא את המפתחות של Supabase, Stripe ועוד. בנוסף נדרש להתקין Flutter 3.22 ומעלה, להריץ `supabase init` ולהפעיל את שירותי Supabase והפונקציות.
@@ -34,3 +36,8 @@ curl -X POST http://localhost:54321/functions/v1/predict-reorder
 ### מפתח API לסופבייס
 במסך Settings → API ב-Supabase מצאו את ה-Service Role וצרפו אותו כ-`SUPABASE_SERVICE_ROLE_KEY` ב-`.env` ובלשונית הסודות של GitHub.
 \nלמידע על מצב לא מקוון ראו docs/offline.md
+
+## Branch Protection
+- יש לפתוח Pull Request עבור כל שינוי לענף `main`.
+- נדרש אישור סקירה אחד לפחות לפני מיזוג.
+- יש לוודא שכל בדיקות ה-CI (לדוגמה, "Flutter Tests") עוברות בהצלחה לפני מיזוג.
