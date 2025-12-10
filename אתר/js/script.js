@@ -44,3 +44,43 @@ window.addEventListener('load', () => {
     // they fade in automatically by CSS keyframes
   });
 });
+
+// ROI Calculator
+const roiForm = document.getElementById('roiForm');
+const roiOutput = document.getElementById('roiOutput');
+
+if (roiForm && roiOutput) {
+  const resultNumber = roiOutput.querySelector('.result-number');
+  const tagline = roiOutput.querySelector('.tagline');
+  const pill = roiOutput.querySelector('.pill');
+
+  const formatMoney = (value) => new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 }).format(value);
+
+  const calculate = () => {
+    const sessions = parseFloat(roiForm.sessions.value) || 0;
+    const price = parseFloat(roiForm.price.value) || 0;
+    const consumption = parseFloat(roiForm.consumption.value) || 0;
+    const occupancy = Math.min(Math.max(parseFloat(roiForm.occupancy.value) || 0, 0), 100) / 100;
+    const cost = parseFloat(roiForm.cost.value) || 0;
+
+    const gross = sessions * price * consumption * 30 * occupancy;
+    const net = Math.max(gross - cost, 0);
+    const payback = gross > 0 ? Math.max((cost * 4) / Math.max(net, 1), 0) : 0;
+
+    resultNumber.textContent = `₪ ${formatMoney(net)}`;
+    if (tagline) {
+      tagline.textContent = `הכנסה חודשית צפויה לפני מע"מ לאחר עלויות תפעול (${formatMoney(cost)} ₪).`;
+    }
+    if (pill) {
+      pill.textContent = `החזר השקעה משוער: ${payback.toFixed(1)} חודשים בהיקף ההתקנות הנוכחי.`;
+    }
+  };
+
+  roiForm.addEventListener('input', calculate);
+  roiForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    calculate();
+  });
+
+  calculate();
+}
