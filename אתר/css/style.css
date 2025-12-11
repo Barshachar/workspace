@@ -1,6 +1,10 @@
 /* style.css */
 
 /* Google Font (Poppins) כבר נטען ב-HTML, אנחנו רק משתמשים בו */
+html {
+  direction: rtl;
+}
+
 body, input, textarea, select, button {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -11,6 +15,7 @@ body, input, textarea, select, button {
 
 body {
   background-color: #000; /* רקע שחור כללי */
+  text-align: right;
 }
 
 /* === HEADER / NAVBAR === */
@@ -25,15 +30,16 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px 20px;
   position: relative; /* כדי שנוכל למקם בורגר וכו' */
+  direction: rtl;
 }
 
 .logo {
-  margin-right: 50px; /* רווח בין הלוגו לתפריט */
+  margin-left: 50px; /* רווח בין הלוגו לתפריט ב-RTL */
 }
 
 .logo img {
@@ -48,6 +54,7 @@ body {
   gap: 20px;
   transition: height 0.3s ease;
   position: relative;
+  text-align: right;
 }
 
 /* קישורי תפריט */
@@ -117,11 +124,12 @@ body {
   background-color: #111;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   min-width: 150px;
   display: none;
   flex-direction: column;
   z-index: 999;
+  text-align: right;
 }
 
 .nav-links li.has-dropdown .dropdown li {
@@ -151,7 +159,7 @@ body {
     position: static;
     background-color: inherit;
     border: none;
-    display: none; 
+    display: none;
   }
   .nav-links.expanded li.has-dropdown .dropdown {
     display: flex;
@@ -159,7 +167,7 @@ body {
   }
   .nav-links li.has-dropdown .dropdown li a {
     border-bottom: 1px solid #333;
-    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 

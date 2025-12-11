@@ -43,4 +43,55 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.fade-in-on-load').forEach(elem => {
     // they fade in automatically by CSS keyframes
   });
+
+  // Analytics: track CTA clicks
+  const ctaButtons = document.querySelectorAll('.btn-cta');
+  if (ctaButtons.length) {
+    ctaButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const label = btn.textContent.trim() || btn.getAttribute('aria-label') || 'CTA Click';
+        const href = btn.getAttribute('href') || 'button';
+        const trackingPayload = {
+          event: 'cta_click',
+          cta_text: label,
+          cta_href: href
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(trackingPayload);
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', {
+            event_category: 'engagement',
+            event_label: label,
+            event_action: href
+          });
+        }
+      });
+    });
+  }
+
+  // Analytics: track form submissions
+  const trackedForms = document.querySelectorAll('form.styled-form');
+  if (trackedForms.length) {
+    trackedForms.forEach(form => {
+      form.addEventListener('submit', () => {
+        const formLabel = form.getAttribute('name') || form.getAttribute('id') || form.getAttribute('action') || 'Styled Form';
+        const trackingPayload = {
+          event: 'lead_form_submit',
+          form_name: formLabel
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(trackingPayload);
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'lead_form_submit', {
+            event_category: 'lead',
+            event_label: formLabel
+          });
+        }
+      });
+    });
+  }
 });
